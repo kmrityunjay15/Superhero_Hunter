@@ -17,12 +17,9 @@ async function searchHeros(textSearched) {
      }
 
      // API call to get the data // nameStartsWith=${textSearched}
-     await fetch(`https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=e04cd2f8687bf8032fbc26e34f4580d4&hash=${hash}`)
+     await fetch(`https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=e04cd2f8687bf8032fbc26e34f4580d4&hash=${hash}?nameStartsWith=${textSearched}`)
           .then(res => res.json()) 
-          .then(data => {
-            console.log("got the data:", data);
-            showSearchedResults(data.data.results);
-          });
+          .then(data => showSearchedResults(data.data.results));
 }
 
 function showSearchedResults(searchedHero) {
